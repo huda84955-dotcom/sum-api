@@ -10,3 +10,7 @@ class Numbers(BaseModel):
 @app.post("/sum")
 def get_sum(data: Numbers):
     return {"sum": data.num1 + data.num2}
+
+@app.post("/subtract")
+def get_subtract(data: Numbers):
+    return {"difference": data.num1 - data.num2}
