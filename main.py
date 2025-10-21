@@ -1,16 +1,7 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from routers import calculator  # Import the router file
 
-app = FastAPI()
+app = FastAPI(title="Sum and Subtract API", description="Simple API to add and subtract numbers", version="1.0")
 
-class Numbers(BaseModel):
-    num1: float
-    num2: float
-
-@app.post("/sum")
-def get_sum(data: Numbers):
-    return {"sum": data.num1 + data.num2}
-
-@app.post("/subtract")
-def get_subtract(data: Numbers):
-    return {"difference": data.num1 - data.num2}
+# Connect your router to the app
+app.include_router(calculator.router)
